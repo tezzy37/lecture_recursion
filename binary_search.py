@@ -3,6 +3,18 @@ import json
 
 cwd_path = os.getcwd()
 file_path = "files"
+def recursive_binary_search(seznam, hodnota, pravy_idx, levy_idx):
+
+    mid = len(levy_idx+pravy_idx)//2
+    if levy_idx == pravy_idx:
+        return mid
+    elif hodnota == seznam[mid]:
+        return mid
+    elif seznam[mid] < hodnota:
+        return recursive_binary_search(seznam, hodnota, mid - 1, levy_idx)
+
+    elif seznam[mid] > hodnota:
+        return recursive_binary_search(seznam, hodnota, pravy_idx, mid - 1)
 
 
 def read_data(file_name, key="ordered_numbers"):
